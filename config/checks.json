@@ -1,0 +1,84 @@
+{
+  "$schema": "./schemas/checks.schema.json",
+  "version": "0.1.0",
+  "rules": [
+    {
+      "id": "abuse_spam",
+      "description": "Not abusive. A reviewer sees every warning; thresholds are untuned starting points.",
+      "type": "toxicity",
+      "model": "toxicity/detoxify-unbiased@int8",
+      "fields": ["name", "summary", "getting_going", "quirks"],
+      "thresholds": {
+        "toxicity": { "warn": 0.7 },
+        "insult": { "warn": 0.7 },
+        "identity_attack": { "warn": 0.5, "reject": 0.9 },
+        "threat": { "warn": 0.5, "reject": 0.9 },
+        "sexual_explicit": { "warn": 0.5 },
+        "severe_toxicity": { "reject": 0.5 }
+      },
+      "message": "This reads as abusive. Describe the device and its behaviour without insults or attacks.",
+      "guideline": "docs/text-contribution-guidelines.md#rules"
+    },
+    {
+      "id": "english",
+      "description": "English only. Names, codes and capitalised words are masked first; units with too few letters left are skipped. The name field is exempt.",
+      "type": "language",
+      "model": "language/glotlid-v4@ftz",
+      "fields": ["summary", "getting_going", "quirks"],
+      "language": "eng_Latn",
+      "min_letters": 15,
+      "warn_below": 0.3,
+      "reject_below": 0.05,
+      "reject_needs_other_at_least": 0.5,
+      "message": "Contributions are in English for now. Please translate this part.",
+      "guideline": "docs/text-contribution-guidelines.md#rules"
+    },
+    {
+      "id": "consistency",
+      "description": "Consistent with the structured data: the strongest contradiction against any one fact.",
+      "type": "nli_contradiction",
+      "model": "nli/nli-deberta-v3-base@fp32",
+      "fields": ["summary", "getting_going", "quirks"],
+      "thresholds": {
+        "contradiction": { "warn": 0.9 }
+      },
+      "message": "This seems to contradict the device's structured data. Check it, or correct the structured data.",
+      "guideline": "docs/text-contribution-guidelines.md#rules"
+    },
+    {
+      "id": "adds_value",
+      "description": "Text adds something beyond the structured data: fires when one fact already says the same.",
+      "type": "nli_entailment",
+      "model": "nli/nli-deberta-v3-base@fp32",
+      "fields": ["summary", "quirks"],
+      "thresholds": {
+        "entailment": { "warn": 0.95 }
+      },
+      "message": "The structured data already says this. Use the space for what it can't say.",
+      "guideline": "docs/text-contribution-guidelines.md#2-what-the-text-has-to-add-on-top-of-the-structured-data"
+    },
+    {
+      "id": "image_category",
+      "description": "Images show the device: zero-shot classes from image-classes.json.",
+      "type": "image_class",
+      "model": "image-embed/siglip2-base-256@fp32",
+      "thresholds": {
+        "unrelated": { "warn": 0.5 }
+      },
+      "message": "This image doesn't seem to show the device. Use photos of the device, its packaging, label or internals, or app screenshots.",
+      "guideline": "docs/spec.md#zero-shot-image-classification"
+    },
+    {
+      "id": "obscenity",
+      "description": "Any sign of sexual content goes to review; very likely explicit images are rejected so reviewers don't see them.",
+      "type": "obscenity",
+      "model": "obscenity/freepik-eva02@fp32",
+      "thresholds": {
+        "at_least_low": { "warn": 0.5 },
+        "at_least_high": { "reject": 0.9 }
+      },
+      "message": "This image can't be used. Upload photos of the device only.",
+      "guideline": "docs/spec.md#open-questions"
+    }
+  ]
+}

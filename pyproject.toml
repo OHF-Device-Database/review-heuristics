@@ -1,0 +1,14 @@
+# One uv workspace: the checks engine, the model server and the benchmark harness share a
+# lockfile, so the server and harness run the same ddb_checks code.
+[tool.uv.workspace]
+members = ["checks", "serve", "eval"]
+
+[tool.uv.sources]
+ddb-checks = { workspace = true }
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

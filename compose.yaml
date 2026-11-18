@@ -1,0 +1,44 @@
+name: ddb-checks
+
+services:
+  serve:
+    build:
+      context: .
+      dockerfile: serve/Dockerfile
+      target: runtime
+      args:
+        PLAYGROUND: "true"
+    image: ddb-checks/serve:dev
+    environment:
+      SERVE_MODELS: ${SERVE_MODELS:-*}
+    volumes:
+      - models:/models:ro
+    ports:
+      - "127.0.0.1:${SERVE_PORT:-8000}:8000"
+    # Pinned cores make cost runs repeatable; match this to the target core budget.
+    cpuset: ${SERVE_CPUSET:-0-3}
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/readyz')"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+      start_period: 10s
+
+  eval:
+    build:
+      context: .
+      dockerfile: eval/Dockerfile
+    image: ddb-checks/eval:dev
+    profiles: [eval]
+    volumes:
+      - models:/models
+      - reports:/reports
+      - hf-cache:/cache
+
+volumes:
+  models:
+  reports:
+  hf-cache:

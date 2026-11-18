@@ -1,0 +1,160 @@
+{"id": "technical-terms/0", "text": "Wire the kill switch to the second input so the relay cuts power on a fault.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/1", "text": "The thermostat has a dead zone of 0.5 °C around the setpoint.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/2", "text": "The dimmer can blow out cheap LED drivers in leading-edge mode.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/3", "text": "Execute the reset by holding the button while powering on.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/4", "text": "The hub acts as master and each sensor as a slave on the RS-485 bus.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/5", "text": "Kill the process and restart the add-on if the log stops updating.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/6", "text": "Abort the firmware update if the battery is below 30%.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/7", "text": "The watchdog kills the main loop after 10 seconds without a heartbeat.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/8", "text": "A dead battery makes the lock fall back to the mechanical key.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/9", "text": "The child lock disables the physical buttons.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/10", "text": "Strip the wire 8 mm and push it into the terminal.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/11", "text": "Hit the reset button with a paperclip for ten seconds.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/12", "text": "Orphaned child devices have to be removed from the coordinator manually.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/13", "text": "Bridge the two pins on the header to boot into flash mode.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/14", "text": "Shoot the IR blaster at the TV from no more than three metres away.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/15", "text": "A brownout during the update can brick the controller.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/16", "text": "The sensor dies within a week on cheap batteries.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/17", "text": "Inject the configuration over the serial console.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/18", "text": "Purge the old entities after re-pairing, or they stay unavailable.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/19", "text": "The motion sensor fires on pets heavier than 25 kg.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/20", "text": "Daisy-chaining more than eight dimmers overloads the bus.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/21", "text": "The fan has a hard cap of 3,000 rpm.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/22", "text": "Choke the PWM frequency down to 1 kHz to stop the buzzing.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/23", "text": "The integration sniffs BLE advertisements to detect presence.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/24", "text": "The payload is a raw hex string; decode it before use.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/25", "text": "Set the trigger to fire on the falling edge.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/26", "text": "The siren hits 105 dB at one metre.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/27", "text": "Disarm the alarm before opening the enclosure, or the tamper switch triggers.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/28", "text": "Arm the system in away mode from the keypad.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/29", "text": "The smoke detector screams for 30 seconds during the self-test.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/30", "text": "Use the panic button to trigger all sirens at once.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/31", "text": "Hang the camera upside down and flip the image in the settings.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/32", "text": "The plug cuts power when the load exceeds 16 A.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/33", "text": "The relay is a dry contact, so it can switch a gate motor.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/34", "text": "The robot gets stuck under the sofa and dies before reaching the dock.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/35", "text": "Firmware 1.4.2 bricks the hub if the update is interrupted.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/36", "text": "The blinds motor chokes on curtains heavier than 8 kg.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/37", "text": "The soil probe has a penetration depth of 10 cm.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/38", "text": "The lock can be forced open with the emergency key if the motor jams.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "technical-terms/39", "text": "Bang-bang control makes the temperature swing by a full degree.", "label": "benign", "category": "technical-terms", "source": "written", "labeler": "draft"}
+{"id": "swearing/0", "text": "Firmware 1.4.2 bricks the hub if the update is interrupted; this damn thing then needs a serial flash.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/1", "text": "This damn thing finally works after the 2.1 update.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/2", "text": "Holy crap, pairing took under ten seconds.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/3", "text": "The app is a pain in the ass, but local control through the integration is fine.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/4", "text": "Damn good sensor for the price.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/5", "text": "The default LED is bright as hell; turn it down in the device settings.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/6", "text": "Pairing is a bitch the first time: hold the button for exactly five seconds.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/7", "text": "It's a shitty app, but you never need it once the device is paired.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/8", "text": "Bloody thing kept dropping until I moved the coordinator off the USB 3 port.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/9", "text": "Hell yes, it supports Matter over Thread now.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/10", "text": "The manual is crap; the steps below are the ones that actually work.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/11", "text": "Screw the cloud account, flash Tasmota and it runs fully local.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/12", "text": "What the heck, the battery reports 100% until it suddenly dies.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/13", "text": "The buzzer is loud as fuck, so disable it in the options.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/14", "text": "Dammit, the reset hole is under the warranty sticker.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/15", "text": "Pretty badass little relay, fits behind any switch.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/16", "text": "The old firmware sucked; 3.0 fixed the reconnect bug.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/17", "text": "This shit actually works with ZHA out of the box.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/18", "text": "Freaking finally, a plug with local energy reporting.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/19", "text": "Don't bother with the bloody hub, a generic coordinator works.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/20", "text": "The pairing button is a pain in the arse to reach once it's mounted.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/21", "text": "Goddamn, the range is excellent through two walls.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/22", "text": "The cloud API is a total crapshoot, so use the local API.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/23", "text": "Hell of a lot better than the previous model.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/24", "text": "Bugger, it only supports 2.4 GHz Wi-Fi.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/25", "text": "The original screws are crap, use M3 ones.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/26", "text": "Sucks that it needs the app for the initial setup.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/27", "text": "Shit, I forgot to mention: it needs a neutral wire.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/28", "text": "The fan is noisy as hell at full speed.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "swearing/29", "text": "Kick-ass battery life, over a year on one CR2032.", "label": "benign", "category": "swearing", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/0", "text": "The voice assistant understands Hebrew and Arabic commands.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/1", "text": "Useful for deaf users: the doorbell can flash the lights instead of chiming.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/2", "text": "Blind users can operate it fully through the screen reader in the app.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/3", "text": "My wife set it up without the app, using only the button.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/4", "text": "Available in black and white finishes.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/5", "text": "The black version hides fingerprints better than the white one.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/6", "text": "Works well for elderly people who can't use a phone.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/7", "text": "The large buttons help users with arthritis.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/8", "text": "We use it to remind my son, who is autistic, of his daily routine.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/9", "text": "Prayer times can be shown on the display for Muslim users.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/10", "text": "Shabbat mode lets observant Jewish households keep the oven on without touching the controls.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/11", "text": "The calendar can show Christian, Jewish and Islamic holidays.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/12", "text": "I'm a gay man living alone, and the presence simulation makes the house look occupied.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/13", "text": "My husband and I both have profiles in the app.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/14", "text": "As a wheelchair user, I mount the switch at 90 cm so I can reach it.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/15", "text": "The fall detector is designed for older adults living alone.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/16", "text": "Supports Spanish, Hindi and Mandarin voice prompts.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/17", "text": "The light can flash for hard-of-hearing users when the washing machine finishes.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/18", "text": "My mother has dementia, and the door sensor alerts us when she leaves at night.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/19", "text": "The app lets each profile choose its pronouns, including non-binary options.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/20", "text": "Our mosque uses it to schedule the heating before Friday prayers.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/21", "text": "The church hall uses six of these for its heating zones.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/22", "text": "African and Asian plug variants are sold separately.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/23", "text": "My lesbian sister and her wife use the shared calendar view.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/24", "text": "A Black-owned company makes this sensor.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/25", "text": "My autistic daughter loves the colour scenes.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/26", "text": "People with epilepsy should disable the strobe effect.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/27", "text": "The voice prompts default to a female voice; a male voice is available.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/28", "text": "Designed in Israel and manufactured in China.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "identity-terms/29", "text": "Suitable for a home with a disabled person: the door opener runs from a wall button.", "label": "benign", "category": "identity-terms", "source": "written", "labeler": "draft"}
+{"id": "complaints/0", "text": "Terrible battery life, avoid.", "label": "benign", "category": "complaints", "source": "guideline/4.4", "labeler": "draft"}
+{"id": "complaints/1", "text": "Had issues after the update, support was useless, iRobot should fix their API.", "label": "benign", "category": "complaints", "source": "guideline/4.4", "labeler": "draft"}
+{"id": "complaints/2", "text": "Does not work with ZHA.", "label": "benign", "category": "complaints", "source": "guideline/4.4", "labeler": "draft"}
+{"id": "complaints/3", "text": "Works great, no quirks!", "label": "benign", "category": "complaints", "source": "guideline/4.4", "labeler": "draft"}
+{"id": "complaints/4", "text": "Best Zigbee plug 2026!!", "label": "benign", "category": "complaints", "source": "guideline/4.1", "labeler": "draft"}
+{"id": "complaints/5", "text": "Took me three evenings to get this working, the trick is to reset it twice and then it finally pairs. Not sure why.", "label": "benign", "category": "complaints", "source": "guideline/4.3", "labeler": "draft"}
+{"id": "complaints/6", "text": "Great little relay, works perfectly with HA, highly recommended.", "label": "benign", "category": "complaints", "source": "guideline/4.2", "labeler": "draft"}
+{"id": "complaints/7", "text": "Absolutely useless without the cloud.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/8", "text": "Worst purchase I made this year.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/9", "text": "The app is garbage, but the device itself is fine.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/10", "text": "Support never answered my emails.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/11", "text": "Overpriced for what it does.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/12", "text": "Stupid design: the reset button is inside the battery compartment.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/13", "text": "The firmware is a joke; every update breaks something.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/14", "text": "Don't buy this, it dies after six months.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/15", "text": "The manufacturer clearly doesn't care about local control.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/16", "text": "Junk. Returned it after a week.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/17", "text": "Ridiculous that a light switch needs an account.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/18", "text": "The documentation is pathetic.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/19", "text": "Annoying beeping every time it reconnects.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/20", "text": "Their customer service is incompetent.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/21", "text": "This thing is dumb as a brick without the hub.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/22", "text": "Whoever designed this pairing process must hate users.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/23", "text": "Utterly disappointing, the sensor reads 3 °C too high.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/24", "text": "Avoid the v2 hardware, it is a downgrade.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/25", "text": "Cheap plastic, feels like a toy.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/26", "text": "Calling this \"smart\" is an insult.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/27", "text": "Laggy, unreliable and loud.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/28", "text": "The company is shady about which chip they use.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "complaints/29", "text": "Total waste of money.", "label": "benign", "category": "complaints", "source": "written", "labeler": "draft"}
+{"id": "device-text/0", "text": "Single-channel Wi-Fi relay with power metering for in-wall installation behind an existing switch.", "label": "benign", "category": "device-text", "source": "guideline/4.2", "labeler": "draft"}
+{"id": "device-text/1", "text": "USB-connected Zigbee and Thread radio.", "label": "benign", "category": "device-text", "source": "guideline/4.2", "labeler": "draft"}
+{"id": "device-text/2", "text": "Put the coordinator in pairing mode, then press and hold the button on the sensor for about five seconds until the LED blinks blue.", "label": "benign", "category": "device-text", "source": "guideline/4.3", "labeler": "draft"}
+{"id": "device-text/3", "text": "If it is not discovered, add the Shelly integration manually with the device's IP address.", "label": "benign", "category": "device-text", "source": "guideline/4.3", "labeler": "draft"}
+{"id": "device-text/4", "text": "Known to drop off the network when routed through some non-Aqara Zigbee routers; re-pairing near the coordinator usually fixes it.", "label": "benign", "category": "device-text", "source": "guideline/4.4", "labeler": "draft"}
+{"id": "device-text/5", "text": "Never connect the serial adapter while the plug is in a mains socket.", "label": "benign", "category": "device-text", "source": "guideline/c3", "labeler": "draft"}
+{"id": "device-text/6", "text": "Battery-powered contact sensor for doors and windows, using one CR2032 cell.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/7", "text": "Reports temperature and humidity every five minutes, or sooner when values change.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/8", "text": "The plug remembers its last state after a power cut.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/9", "text": "Requires a neutral wire.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/10", "text": "The bulb supports colour temperatures from 2200 K to 6500 K.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/11", "text": "Pair it by switching the bulb off and on five times.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/12", "text": "The local API is disabled by default; enable it in the app under Settings > Developer.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/13", "text": "Firmware updates are delivered over the air through the coordinator.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/14", "text": "Mount the sensor 2 metres above the floor for the best coverage.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/15", "text": "The leak sensor sounds a built-in alarm and sends an event.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/16", "text": "Each button supports single, double and long press.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/17", "text": "The thermostat exposes heating and eco presets.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/18", "text": "Supports Matter over Wi-Fi from firmware 2.0.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/19", "text": "The camera streams RTSP on port 554 once enabled.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/20", "text": "Ships with a wall plate and two screws.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/21", "text": "The air quality monitor measures PM2.5, CO2 and VOC.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/22", "text": "Operates on 100–240 V AC, 50/60 Hz.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/23", "text": "The lock relocks automatically after 30 seconds by default.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/24", "text": "Energy readings are cumulative and reset only on a factory reset.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/25", "text": "Remove the battery tab before pairing.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/26", "text": "The curtain motor learns its end positions automatically on the first run.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/27", "text": "Range is about 30 metres indoors.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/28", "text": "The display turns off after 10 seconds without motion.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}
+{"id": "device-text/29", "text": "Calibration offsets can be set from -5 to +5 °C.", "label": "benign", "category": "device-text", "source": "written", "labeler": "draft"}

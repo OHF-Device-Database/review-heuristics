@@ -1,0 +1,34 @@
+{
+  "$schema": "./schemas/image-classes.schema.json",
+  "description": "The image taxonomy, as zero-shot prompts. A class with several prompts is represented by their average. Prompts are lowercased before use.",
+  "classes": {
+    "packshot": {
+      "description": "The device on a plain background.",
+      "prompts": ["a product photo of a device on a plain white background"]
+    },
+    "in_situ": {
+      "description": "The device installed or in use.",
+      "prompts": ["a smart home device installed in a room"]
+    },
+    "packaging": {
+      "description": "The retail box.",
+      "prompts": ["the retail packaging box of an electronic device"]
+    },
+    "label": {
+      "description": "A label or nameplate with model or regulatory details.",
+      "prompts": ["a close-up of a product label with a model number"]
+    },
+    "internals": {
+      "description": "The circuit board or inside of the device.",
+      "prompts": ["the inside of an electronic device showing its circuit board"]
+    },
+    "screenshot": {
+      "description": "An app or web interface for the device.",
+      "prompts": ["a screenshot of a phone app"]
+    },
+    "unrelated": {
+      "description": "Anything that doesn't show the device.",
+      "prompts": ["a photo of an animal, plant or landscape", "a photo of people"]
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Models",
+  "description": "Every model variant the server can load. An id is <task>/<name>@<precision>; its files live in <models dir>/<task>/<name>/<precision>/.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+/[a-z0-9.-]+@[a-z0-9]+$"
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^[^@]+@[0-9a-f]{7,40}$",
+            "description": "Hugging Face repo pinned to a commit: repo@revision."
+          },
+          "license": {
+            "type": "string"
+          },
+          "artifact": {
+            "type": "string",
+            "description": "A file in the repo to use as published, instead of exporting."
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true,
+            "description": "The model outputs to expose; all of them when omitted."
+          },
+          "safe_label": {
+            "type": "string",
+            "description": "Image classifiers: the label meaning safe."
+          },
+          "graded": {
+            "type": "boolean",
+            "description": "Image classifiers: labels run from safe to most explicit."
+          },
+          "runtime": {
+            "type": "object",
+            "properties": {
+              "intra_op_threads": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "max_concurrency": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "max_queue": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "batch_size": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "memory_arena": {
+                "type": "boolean",
+                "description": "Off returns memory after each request, for slightly slower inference."
+              }
+            },
+            "additionalProperties": false
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "license"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "models"
+  ],
+  "additionalProperties": false
+}

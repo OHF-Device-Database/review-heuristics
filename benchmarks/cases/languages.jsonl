@@ -1,0 +1,24 @@
+{"id": "languages/de-0", "contribution": {"fields": {"summary": "Der Sensor meldet Temperatur und Luftfeuchtigkeit alle fünf Minuten."}}, "expect": {"english": "reject"}, "why": "Not English (de)."}
+{"id": "languages/de-1", "contribution": {"fields": {"summary": "Zum Koppeln die Taste fünf Sekunden lang gedrückt halten, bis die LED blinkt."}}, "expect": {"english": "reject"}, "why": "Not English (de)."}
+{"id": "languages/de-2", "contribution": {"fields": {"summary": "Das Gerät verliert manchmal die Verbindung, wenn es weit vom Router entfernt ist."}}, "expect": {"english": "reject"}, "why": "Not English (de)."}
+{"id": "languages/fr-3", "contribution": {"fields": {"summary": "Le capteur se connecte au hub et envoie la température toutes les cinq minutes."}}, "expect": {"english": "reject"}, "why": "Not English (fr)."}
+{"id": "languages/fr-4", "contribution": {"fields": {"summary": "Maintenez le bouton enfoncé pendant cinq secondes jusqu'à ce que la lumière clignote."}}, "expect": {"english": "reject"}, "why": "Not English (fr)."}
+{"id": "languages/fr-5", "contribution": {"fields": {"summary": "La batterie dure environ un an avec une utilisation normale."}}, "expect": {"english": "reject"}, "why": "Not English (fr)."}
+{"id": "languages/nl-6", "contribution": {"fields": {"summary": "De sensor meldt beweging, lichtsterkte en temperatuur aan de hub."}}, "expect": {"english": "reject"}, "why": "Not English (nl)."}
+{"id": "languages/nl-7", "contribution": {"fields": {"summary": "Houd de knop vijf seconden ingedrukt totdat het lampje knippert."}}, "expect": {"english": "reject"}, "why": "Not English (nl)."}
+{"id": "languages/es-8", "contribution": {"fields": {"summary": "El sensor informa de la temperatura y la humedad cada cinco minutos."}}, "expect": {"english": "reject"}, "why": "Not English (es)."}
+{"id": "languages/es-9", "contribution": {"fields": {"summary": "Mantén pulsado el botón durante cinco segundos hasta que parpadee la luz."}}, "expect": {"english": "reject"}, "why": "Not English (es)."}
+{"id": "languages/it-10", "contribution": {"fields": {"summary": "Il sensore invia la temperatura e l'umidità ogni cinque minuti."}}, "expect": {"english": "reject"}, "why": "Not English (it)."}
+{"id": "languages/it-11", "contribution": {"fields": {"summary": "Tieni premuto il pulsante per cinque secondi finché la luce non lampeggia."}}, "expect": {"english": "reject"}, "why": "Not English (it)."}
+{"id": "languages/pl-12", "contribution": {"fields": {"summary": "Czujnik wysyła temperaturę i wilgotność co pięć minut."}}, "expect": {"english": "reject"}, "why": "Not English (pl)."}
+{"id": "languages/sv-13", "contribution": {"fields": {"summary": "Sensorn rapporterar temperatur och luftfuktighet var femte minut."}}, "expect": {"english": "reject"}, "why": "Not English (sv)."}
+{"id": "languages/pt-14", "contribution": {"fields": {"summary": "O sensor envia a temperatura e a humidade a cada cinco minutos."}}, "expect": {"english": "reject"}, "why": "Not English (pt)."}
+{"id": "languages/da-15", "contribution": {"fields": {"summary": "Hold knappen nede i fem sekunder, indtil lyset blinker."}}, "expect": {"english": "reject"}, "why": "Not English (da)."}
+{"id": "languages/en-0", "contribution": {"fields": {"summary": "Shelly Plus 1PM, model SNSW-001P16EU, connects locally."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}
+{"id": "languages/en-1", "contribution": {"fields": {"summary": "Pair it with ZHA or Zigbee2MQTT using the reset button."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}
+{"id": "languages/en-2", "contribution": {"fields": {"summary": "Requires a neutral wire."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}
+{"id": "languages/en-3", "contribution": {"fields": {"summary": "Works with Matter over Thread from firmware 1.2."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}
+{"id": "languages/en-4", "contribution": {"fields": {"summary": "Set the Tuya local key in the integration options."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}
+{"id": "languages/en-5", "contribution": {"fields": {"summary": "The SONOFF ZBDongle-E needs the EmberZNet firmware."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}
+{"id": "languages/en-6", "contribution": {"fields": {"summary": "Flash ESPHome over USB-C, then adopt it in the ESPHome dashboard."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}
+{"id": "languages/en-7", "contribution": {"fields": {"summary": "Power the Aqara FP2 from a 5 V USB adapter of at least 1 A."}}, "expect": {"english": "pass"}, "why": "English, heavy with brand names and model numbers."}

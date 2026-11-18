@@ -1,0 +1,46 @@
+{"id": "guideline/4.1/0", "text": "Roomba Combo j9+", "source": "guideline/4.1"}
+{"id": "guideline/4.1/1", "text": "iRobot Roomba Combo j9+", "source": "guideline/4.1"}
+{"id": "guideline/4.1/2", "text": "Shelly Plus 1PM (SNSW-001P16EU)", "source": "guideline/4.1"}
+{"id": "guideline/4.1/3", "text": "Hue motion sensor (SML001)", "source": "guideline/4.1"}
+{"id": "guideline/4.1/4", "text": "Roomba Combo® j9+", "source": "guideline/4.1"}
+{"id": "guideline/4.1/5", "text": "Philips Hue Motion Sensor SML001 Zigbee", "source": "guideline/4.1"}
+{"id": "guideline/4.1/6", "text": "Temperature, Humidity and Pressure Sensor", "source": "guideline/4.1"}
+{"id": "guideline/4.1/7", "text": "SNSW-001P16EU", "source": "guideline/4.1"}
+{"id": "guideline/4.1/8", "text": "Best Zigbee plug 2026!!", "source": "guideline/4.1"}
+{"id": "guideline/4.2/0", "text": "Vacuum and mop combo bundled with dock for dust bin collection and water supply.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/1", "text": "Single-channel Wi-Fi relay with power metering for in-wall installation behind an existing switch.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/2", "text": "Battery-powered Zigbee sensor reporting motion, light level and temperature; indoor version of the Hue outdoor sensor.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/3", "text": "USB-connected Zigbee and Thread radio.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/4", "text": "The Roomba Combo® j9+ robot vacuum and mop gives your home a powerful, hands-free clean. Dirt Detective, powered by iRobot OS, will automatically clean the dirtiest rooms first.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/5", "text": "Great little relay, works perfectly with HA, highly recommended.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/6", "text": "Shelly Plus 1PM, model SNSW-001P16EU, connects locally and exposes sensor, switch and update entities via the Shelly integration.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/7", "text": "Smart home device.", "source": "guideline/4.2"}
+{"id": "guideline/4.2/8", "text": "I think it is a motion sensor?", "source": "guideline/4.2"}
+{"id": "guideline/4.3/0", "text": "Put the coordinator in pairing mode, then press and hold the button on the sensor for about five seconds until the LED blinks blue.", "source": "guideline/4.3"}
+{"id": "guideline/4.3/1", "text": "Power the relay and join it to your Wi-Fi with the Shelly app or via its own access point (shellyplus1pm-XXXX).", "source": "guideline/4.3"}
+{"id": "guideline/4.3/2", "text": "If it is not discovered, add the Shelly integration manually with the device's IP address.", "source": "guideline/4.3"}
+{"id": "guideline/4.3/3", "text": "Just add it in HA, works out of the box.", "source": "guideline/4.3"}
+{"id": "guideline/4.3/4", "text": "Download the app, create an account, follow the instructions, then it shows up.", "source": "guideline/4.3"}
+{"id": "guideline/4.3/5", "text": "Took me three evenings to get this working, the trick is to reset it twice and then it finally pairs. Not sure why.", "source": "guideline/4.3"}
+{"id": "guideline/4.3/6", "text": "Go to Settings > Devices and services, click Add integration, search for Shelly.", "source": "guideline/4.3"}
+{"id": "guideline/4.4/0", "text": "Job settings for suction, liquid amount, SmartScrub and cleaning passes can only be configured in the app.", "source": "guideline/4.4"}
+{"id": "guideline/4.4/1", "text": "Known to drop off the network when routed through some non-Aqara Zigbee routers; re-pairing near the coordinator usually fixes it.", "source": "guideline/4.4"}
+{"id": "guideline/4.4/2", "text": "Runs either Zigbee or Thread firmware, not both at once; switching needs a firmware flash.", "source": "guideline/4.4"}
+{"id": "guideline/4.4/3", "text": "Use the USB extension cable from the box; plugged straight into a USB 3 port the stick suffers interference and devices drop.", "source": "guideline/4.4"}
+{"id": "guideline/4.4/4", "text": "Temperature entity is reported to be about 1 to 2 °C high when mounted on a wall near a light switch (unverified, source wanted).", "source": "guideline/4.4"}
+{"id": "guideline/4.4/5", "text": "Terrible battery life, avoid.", "source": "guideline/4.4"}
+{"id": "guideline/4.4/6", "text": "Works great, no quirks!", "source": "guideline/4.4"}
+{"id": "guideline/4.4/7", "text": "Does not work with ZHA.", "source": "guideline/4.4"}
+{"id": "guideline/4.4/8", "text": "Had issues after the update, support was useless, iRobot should fix their API.", "source": "guideline/4.4"}
+{"id": "guideline/4.4/9", "text": "Motion sensor, Zigbee, battery powered, pairs via ZHA. Sometimes slow.", "source": "guideline/4.4"}
+{"id": "guideline/c3/0", "text": "Zigbee radiator valve with built-in thermostat and display, sold under several brands (Moes HY368, Silvercrest TVR01).", "source": "guideline/c3"}
+{"id": "guideline/c3/1", "text": "Press and hold the setup button on the back for about 5 seconds until the light blinks red, then press and hold again until it blinks orange; it blinks green when paired.", "source": "guideline/c3"}
+{"id": "guideline/c3/2", "text": "Drops off the network when routed through routers from Centralite, GE, Iris, Ledvance, Legrand, OSRAM, Sylvania, SmartThings or Securifi.", "source": "guideline/c3"}
+{"id": "guideline/c3/3", "text": "Never connect the serial adapter while the plug is in a mains socket.", "source": "guideline/c3"}
+{"id": "guideline/c3/4", "text": "Be sure it is NOT plugged in mains!", "source": "guideline/c3"}
+{"id": "guideline/c3/5", "text": "Available from Amazon.co.uk, Banggood, AliExpress.", "source": "guideline/c3"}
+{"id": "technical-terms/0", "text": "Wire the kill switch to the second input so the relay cuts power on a fault.", "source": "technical-terms"}
+{"id": "technical-terms/1", "text": "The thermostat has a dead zone of 0.5 °C around the setpoint.", "source": "technical-terms"}
+{"id": "technical-terms/2", "text": "The dimmer can blow out cheap LED drivers when set to leading-edge mode.", "source": "technical-terms"}
+{"id": "technical-terms/3", "text": "Execute the reset by holding the button while powering on.", "source": "technical-terms"}
+{"id": "technical-terms/4", "text": "Firmware 1.4.2 bricks the hub if the update is interrupted; this damn thing then needs a serial flash.", "source": "technical-terms"}

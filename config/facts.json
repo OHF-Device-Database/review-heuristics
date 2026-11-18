@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/facts.schema.json",
+  "description": "How the device's structured data is turned into short English sentences, one fact each, for the NLI rules. Keys are structured-data fields. 'template' takes the value as {value}; a list field produces one sentence per item. 'values' maps fixed values to sentences; other values produce none.",
+  "facts": {
+    "brand": { "template": "This device is made by {value}." },
+    "category": { "template": "This device is a {value}." },
+    "connectivity": {
+      "values": {
+        "local": "This device works locally, without an internet connection.",
+        "cloud": "This device needs a cloud service to work."
+      }
+    },
+    "integration": { "template": "Home Assistant supports this device through the {value} integration." },
+    "protocols": { "template": "This device communicates over {value}." },
+    "power": { "template": "This device is powered by {value}." },
+    "identifiers": { "template": "The device's model number is {value}." },
+    "entities": { "template": "In Home Assistant, this device provides a {value} entity." }
+  }
+}

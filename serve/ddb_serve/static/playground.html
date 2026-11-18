@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checks playground</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #ffffff; --text: #1d2330; --muted: #5d6677; --line: #dfe3ea;
+    --accent: #2f6fdf; --accent-soft: #e4ecfb; --hit: #c2410c; --hit-soft: #fdeadf;
+    --ok: #15803d; --bar: #9db8ec; --code: #f0f2f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12151b; --panel: #1b2029; --text: #e6e9ef; --muted: #98a2b3; --line: #2c3340;
+      --accent: #7aa7ff; --accent-soft: #1f2b44; --hit: #fb923c; --hit-soft: #3a2316;
+      --ok: #4ade80; --bar: #3d5a91; --code: #151920;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 2; background: var(--panel);
+           border-bottom: 1px solid var(--line); padding: 12px 16px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 16px; margin: 0 12px 0 0; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  input[type=text], input[type=number], textarea, select {
+    font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line);
+    border-radius: 6px; padding: 6px 8px; }
+  textarea { width: 100%; min-height: 110px; resize: vertical;
+             font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+  button { font: inherit; border: 1px solid var(--accent); background: var(--accent); color: #fff;
+           border-radius: 6px; padding: 6px 14px; cursor: pointer; }
+  button.secondary { background: transparent; color: var(--accent); }
+  button:disabled { opacity: .5; cursor: progress; }
+  #host { width: 260px; }
+  .status { color: var(--muted); }
+  .status.error { color: var(--hit); }
+  nav { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+  nav button { background: transparent; color: var(--muted); border-color: var(--line); }
+  nav button.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+  section { display: none; background: var(--panel); border: 1px solid var(--line);
+            border-radius: 8px; padding: 16px; }
+  section.active { display: block; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 8px 0; }
+  label { color: var(--muted); }
+  .note { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } #host { width: 100%; } }
+  .out { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; margin-top: 12px; font-size: 13px; }
+  table.text td:first-child { min-width: 240px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .score { display: flex; align-items: center; gap: 6px; min-width: 120px; }
+  .score .track { flex: 1; height: 6px; background: var(--code); border-radius: 3px; overflow: hidden; }
+  .score .fill { height: 100%; background: var(--bar); }
+  .score.hit .fill { background: var(--hit); }
+  .score.hit span { color: var(--hit); font-weight: 600; }
+  .score span { font-variant-numeric: tabular-nums; min-width: 44px; text-align: right; }
+  .result-meta { color: var(--muted); font-size: 12px; margin-top: 10px; }
+  .error-box { background: var(--hit-soft); color: var(--hit); border-radius: 6px; padding: 8px 10px; margin-top: 12px; }
+  details { margin-top: 10px; }
+  pre { background: var(--code); padding: 10px; border-radius: 6px; overflow: auto; max-height: 360px; font-size: 12px; }
+  .tray { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; min-height: 40px;
+          border: 1px dashed var(--line); border-radius: 8px; padding: 8px; }
+  .tray.drag { border-color: var(--accent); background: var(--accent-soft); }
+  .thumb { position: relative; width: 84px; text-align: center; font-size: 11px; color: var(--muted); }
+  .thumb img { width: 84px; height: 84px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+  .thumb button { position: absolute; top: 2px; right: 2px; padding: 0 5px; font-size: 11px; }
+  td img { width: 64px; height: 64px; object-fit: cover; border-radius: 4px; }
+  .classes { display: grid; grid-template-columns: minmax(80px, max-content) 1fr 1fr; gap: 2px 12px; align-items: center; }
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; background: var(--code); margin: 1px 2px; }
+  code { background: var(--code); padding: 1px 4px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <h1>Checks playground</h1>
+    <label for="host">Host</label>
+    <input id="host" type="text" spellcheck="false">
+    <button id="connect">Connect</button>
+    <span id="status" class="status"></span>
+    <a id="docs" href="/docs" target="_blank" rel="noopener" style="margin-left:auto">API docs</a>
+  </div>
+</header>
+<main>
+  <nav id="tabs"></nav>
+
+  <section id="toxicity" data-title="Toxicity">
+    <p class="note">One text per line. Scores at 0.5 or above are highlighted; that is a placeholder, not a tuned threshold.</p>
+    <div class="row"><label>Model <select data-task="toxicity"></select></label></div>
+    <textarea id="tox-texts">Wire the kill switch to the second input so the relay cuts power on a fault.
+This damn thing finally works after the 2.1 update.
+The documentation is pathetic.
+Whoever wrote this integration is a complete idiot.</textarea>
+    <div class="row"><button data-run="toxicity">Score</button></div>
+    <div class="out"></div>
+  </section>
+
+  <section id="nli" data-title="NLI">
+    <p class="note">Pairs: does the premise (device facts) imply or contradict each hypothesis? Zero-shot: score each text against candidate labels.</p>
+    <div class="row">
+      <label>Model <select data-task="nli"></select></label>
+      <label><input type="radio" name="nli-mode" value="pairs" checked> Pairs</label>
+      <label><input type="radio" name="nli-mode" value="zero_shot"> Zero-shot</label>
+    </div>
+    <div id="nli-pairs" class="grid">
+      <div><label>Premise</label><textarea id="nli-premise">The Nest Hub is a smart display. It connects over Wi-Fi. It has no Zigbee radio.</textarea></div>
+      <div><label>Hypotheses, one per line</label><textarea id="nli-hypotheses">The Nest Hub acts as a Zigbee coordinator for your lights.
+Smart display with a touchscreen that connects over Wi-Fi.
+Terrible battery life, avoid.</textarea></div>
+    </div>
+    <div id="nli-zero" style="display:none">
+      <label>Texts, one per line</label>
+      <textarea id="nli-texts">Great little relay, works perfectly with HA, highly recommended.
+Requires a neutral wire and supports Matter over Wi-Fi.
+Best Zigbee plug 2026!!</textarea>
+      <div class="row">
+        <label>Labels, comma-separated <input id="nli-labels" type="text" size="44" value="a personal opinion, a technical fact, marketing"></label>
+        <label>Template <input id="nli-template" type="text" size="22" value="This text is {}."></label>
+        <label><input id="nli-multi" type="checkbox"> Score labels independently</label>
+      </div>
+    </div>
+    <div class="row"><button data-run="nli">Run</button></div>
+    <div class="out"></div>
+  </section>
+
+  <section id="language" data-title="Language">
+    <p class="note">Names, codes and capitalised mid-sentence words are masked before scoring; the scored text is shown.</p>
+    <div class="row">
+      <label>Model <select data-task="language"></select></label>
+      <label>Top <input id="lang-k" type="number" min="1" max="20" value="3" style="width:60px"></label>
+      <label><input id="lang-mask" type="checkbox" checked> Mask</label>
+      <label>Extra words to mask <input id="lang-vocab" type="text" size="30" value="zigbee, thread, matter"></label>
+    </div>
+    <textarea id="lang-texts">Shelly Plus 1PM, model SNSW-001P16EU, connects locally.
+Der Sensor meldet Temperatur und Luftfeuchtigkeit alle fünf Minuten.
+Le capteur se connecte au hub Zigbee.
+Requires a neutral wire.</textarea>
+    <div class="row"><button data-run="language">Identify</button></div>
+    <div class="out"></div>
+  </section>
+
+  <section id="classify" data-title="Image classify">
+    <p class="note">Zero-shot with SigLIP 2. One class per line as <code>name: prompt; another prompt</code>. "Pick one" scores sum to 1 across the classes; "match" is each class on its own.</p>
+    <div class="row"><label>Model <select data-task="image-embed"></select></label></div>
+    <div class="tray" data-tray></div>
+    <textarea id="classes">packshot: a product photo of a device on a plain white background
+in_situ: a smart home device installed in a room
+packaging: the retail packaging box of an electronic device
+label: a close-up of a product label with a model number
+internals: the inside of an electronic device showing its circuit board
+screenshot: a screenshot of a phone app
+unrelated: a photo of an animal, plant or landscape; a photo of people</textarea>
+    <div class="row"><button data-run="classify">Classify</button></div>
+    <div class="out"></div>
+  </section>
+
+  <section id="embeddings" data-title="Image embeddings">
+    <p class="note">Embeds each image and shows how similar they are to each other (cosine, 1 = identical).</p>
+    <div class="row"><label>Model <select data-task="image-embed"></select></label></div>
+    <div class="tray" data-tray></div>
+    <div class="row"><button data-run="embeddings">Embed</button></div>
+    <div class="out"></div>
+  </section>
+
+  <section id="obscenity" data-title="Obscenity">
+    <p class="note">"At least" gives the probability of that level or worse; nsfw is 1 &minus; P(neutral).</p>
+    <div class="row"><label>Model <select data-task="obscenity"></select></label></div>
+    <div class="tray" data-tray></div>
+    <div class="row"><button data-run="obscenity">Score</button></div>
+    <div class="out"></div>
+  </section>
+</main>
+
+<script>
+"use strict";
+const HIT = 0.5;
+const MAX_IMAGE_BYTES = 20 * 1024 * 1024;
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+const images = [];  // {id, name, data (base64), url}
+
+function remember(key, value) { try { localStorage.setItem(key, value); } catch {} }
+function recall(key) { try { return localStorage.getItem(key); } catch { return null; } }
+function escape(text) {
+  return String(text).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+}
+function host() { return $("#host").value.trim().replace(/\/+$/, ""); }
+function lines(id) { return $(id).value.split("\n").map(s => s.trim()).filter(Boolean); }
+function score(value) {
+  const pct = Math.max(0, Math.min(1, value)) * 100;
+  return `<div class="score${value >= HIT ? " hit" : ""}"><div class="track"><div class="fill" style="width:${pct}%"></div></div><span>${value.toFixed(3)}</span></div>`;
+}
+function modelOf(section) { return $("select", section).value || undefined; }
+
+async function call(path, body) {
+  const response = await fetch(host() + path, body === undefined ? {} : {
+    method: "POST", headers: {"content-type": "application/json"}, body: JSON.stringify(body),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(payload.detail || payload.title || `HTTP ${response.status}`);
+    error.status = response.status;
+    throw error;
+  }
+  return payload;
+}
+
+async function connect() {
+  const status = $("#status");
+  status.className = "status";
+  status.textContent = "Connecting…";
+  $("#docs").href = host() + "/docs";
+  remember("playground-host", host());
+  try {
+    const catalogue = await call("/v1/models");
+    const byTask = {};
+    for (const model of catalogue.models) (byTask[model.task] ??= []).push(model.id);
+    for (const select of $$("select[data-task]")) {
+      const ids = byTask[select.dataset.task] || [];
+      select.innerHTML = ids.length
+        ? ids.map(id => `<option>${escape(id)}</option>`).join("")
+        : `<option value="">none loaded</option>`;
+    }
+    status.textContent = `${catalogue.models.length} models loaded · ${catalogue.runtime.cpus_available} CPUs · ${Math.round(catalogue.runtime.rss_mb)} MB`;
+  } catch (error) {
+    status.className = "status error";
+    status.textContent = error instanceof TypeError
+      ? "Can't reach that host (or it doesn't allow this page's origin: set CORS_ORIGINS on it)."
+      : error.message;
+  }
+}
+
+function show(section, html, request, response) {
+  const shown = request ? JSON.stringify(request, (key, value) =>
+    key === "data" && typeof value === "string" ? `<${value.length} base64 chars>` : value, 2) : "";
+  const timings = response?.timings_ms
+    ? Object.entries(response.timings_ms).map(([k, v]) => `${k} ${v} ms`).join(" · ") : "";
+  $(".out", section).innerHTML = html +
+    (response ? `<div class="result-meta">${escape(response.model)} · ${escape(timings)}</div>` : "") +
+    (request ? `<details><summary>Request and response JSON</summary><pre>${escape(shown)}</pre><pre>${escape(JSON.stringify(response, null, 2))}</pre></details>` : "");
+}
+
+const runners = {
+  async toxicity(section) {
+    const texts = lines("#tox-texts");
+    const request = {model: modelOf(section), texts: texts.map((text, i) => ({id: String(i), text}))};
+    const response = await call("/v1/toxicity", request);
+    const heads = Object.keys(response.results[0].scores);
+    const rows = response.results.map((r, i) =>
+      `<tr><td>${escape(texts[i])}</td>${heads.map(h => `<td>${score(r.scores[h])}</td>`).join("")}</tr>`);
+    show(section, `<table class="text"><tr><th>Text</th>${heads.map(h => `<th>${escape(h)}</th>`).join("")}</tr>${rows.join("")}</table>`, request, response);
+  },
+
+  async nli(section) {
+    const mode = $("input[name=nli-mode]:checked").value;
+    let request, inputs;
+    if (mode === "pairs") {
+      const premise = $("#nli-premise").value.trim();
+      inputs = lines("#nli-hypotheses");
+      request = {model: modelOf(section), pairs: inputs.map((hypothesis, i) => ({id: String(i), premise, hypothesis}))};
+    } else {
+      inputs = lines("#nli-texts");
+      request = {
+        model: modelOf(section),
+        texts: inputs.map((text, i) => ({id: String(i), text})),
+        zero_shot: {
+          labels: $("#nli-labels").value.split(",").map(s => s.trim()).filter(Boolean),
+          hypothesis_template: $("#nli-template").value,
+          multi_label: $("#nli-multi").checked,
+        },
+      };
+    }
+    const response = await call("/v1/texts/nli", request);
+    const columns = Object.keys(response.results[0].scores);
+    const rows = response.results.map((r, i) =>
+      `<tr><td>${escape(inputs[i])}</td>${columns.map(c => `<td>${score(r.scores[c])}</td>`).join("")}</tr>`);
+    show(section, `<table class="text"><tr><th>${mode === "pairs" ? "Hypothesis" : "Text"}</th>${columns.map(c => `<th>${escape(c)}</th>`).join("")}</tr>${rows.join("")}</table>`, request, response);
+  },
+
+  async language(section) {
+    const texts = lines("#lang-texts");
+    const request = {
+      model: modelOf(section),
+      texts: texts.map((text, i) => ({id: String(i), text})),
+      top_k: Number($("#lang-k").value) || 3,
+      mask: $("#lang-mask").checked,
+      vocabulary: $("#lang-vocab").value.split(",").map(s => s.trim()).filter(Boolean),
+    };
+    const response = await call("/v1/texts/language", request);
+    const rows = response.results.map((r, i) => `<tr>
+      <td>${escape(texts[i])}</td>
+      <td>${r.english === null ? "<span class=note>nothing left to score</span>" : score(r.english)}</td>
+      <td>${r.top.map(t => `<span class="pill">${escape(t.language)} ${t.probability.toFixed(3)}</span>`).join("")}</td>
+      <td><code>${escape(r.scored_text)}</code> <span class="note">${r.letters} letters</span></td></tr>`);
+    show(section, `<table class="text"><tr><th>Text</th><th>P(English)</th><th>Top languages</th><th>Scored after masking</th></tr>${rows.join("")}</table>`, request, response);
+  },
+
+  async classify(section) {
+    const classes = {};
+    for (const line of lines("#classes")) {
+      const at = line.indexOf(":");
+      if (at < 1) throw new Error(`Class line needs "name: prompt": ${line}`);
+      classes[line.slice(0, at).trim()] = line.slice(at + 1).split(";").map(s => s.trim()).filter(Boolean);
+    }
+    const request = {model: modelOf(section), classes, images: imagePayload()};
+    const response = await call("/v1/images/classify", request);
+    const names = Object.keys(classes);
+    const rows = response.results.map(r => {
+      const best = names.reduce((a, b) => r.scores[a] >= r.scores[b] ? a : b);
+      return `<tr><td>${thumbnail(r.id)}</td><td><b>${escape(best)}</b></td><td><div class="classes">
+        <span class="note">Class</span><span class="note">Pick one</span><span class="note">Match</span>
+        ${names.map(n => `<span>${escape(n)}</span>${score(r.scores[n])}${score(r.match[n])}`).join("")}</div></td></tr>`;
+    });
+    show(section, `<table><tr><th>Image</th><th>Best</th><th>Scores</th></tr>${rows.join("")}</table>`, request, response);
+  },
+
+  async embeddings(section) {
+    const request = {model: modelOf(section), images: imagePayload()};
+    const response = await call("/v1/images/embeddings", request);
+    const vectors = response.results.map(r => r.embedding);
+    const cosine = (a, b) => a.reduce((sum, x, i) => sum + x * b[i], 0);
+    const header = response.results.map(r => `<th>${thumbnail(r.id)}</th>`).join("");
+    const rows = response.results.map((r, i) =>
+      `<tr><td>${thumbnail(r.id)}</td>${vectors.map(v => `<td>${cosine(vectors[i], v).toFixed(3)}</td>`).join("")}</tr>`);
+    const summary = `<p class="note">${vectors[0].length} dimensions; first values of the first image: ${vectors[0].slice(0, 6).map(x => x.toFixed(4)).join(", ")}…</p>`;
+    const compact = {...response, results: response.results.map(r => ({id: r.id, embedding: `<${r.embedding.length} floats>`}))};
+    show(section, summary + `<table><tr><th></th>${header}</tr>${rows.join("")}</table>`, request, compact);
+  },
+
+  async obscenity(section) {
+    const request = {model: modelOf(section), images: imagePayload()};
+    const response = await call("/v1/obscenity", request);
+    const labels = Object.keys(response.results[0].scores);
+    const levels = Object.keys(response.results[0].at_least || {});
+    const rows = response.results.map(r => `<tr><td>${thumbnail(r.id)}</td><td>${score(r.nsfw)}</td>
+      <td>${levels.map(l => `<div>${escape(l)} ${score(r.at_least[l])}</div>`).join("")}</td>
+      <td>${labels.map(l => `<div>${escape(l)} ${score(r.scores[l])}</div>`).join("")}</td></tr>`);
+    show(section, `<table><tr><th>Image</th><th>nsfw</th><th>At least</th><th>Per level</th></tr>${rows.join("")}</table>`, request, response);
+  },
+};
+
+function imagePayload() {
+  if (!images.length) throw new Error("Add at least one image first.");
+  return images.map(({id, data}) => ({id, data}));
+}
+function thumbnail(id) {
+  const image = images.find(i => i.id === id);
+  return image ? `<img src="${image.url}" alt="${escape(image.name)}" title="${escape(image.name)}">` : escape(id);
+}
+
+async function addFiles(files) {
+  for (const file of files) {
+    if (file.size > MAX_IMAGE_BYTES) { alert(`${file.name} is over 20 MB`); continue; }
+    const data = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result).split(",", 2)[1]);
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(file);
+    });
+    images.push({id: `${images.length + 1}-${file.name}`, name: file.name, data, url: URL.createObjectURL(file)});
+  }
+  renderTrays();
+}
+function renderTrays() {
+  for (const tray of $$("[data-tray]")) {
+    tray.innerHTML = images.map((image, i) => `<div class="thumb"><img src="${image.url}" alt="">
+      <button class="secondary" data-remove="${i}" title="Remove">×</button>${escape(image.name.slice(0, 14))}</div>`).join("") +
+      `<div class="row" style="margin:0"><label><input type="file" accept="image/*" multiple> or drop images here</label>
+      ${images.length ? `<button class="secondary" data-clear>Clear</button>` : ""}</div>`;
+  }
+}
+
+function init() {
+  $("#host").value = recall("playground-host") || location.origin;
+  const nav = $("#tabs");
+  for (const section of $$("section")) {
+    const tab = document.createElement("button");
+    tab.textContent = section.dataset.title;
+    tab.onclick = () => {
+      $$("nav button").forEach(b => b.classList.toggle("active", b === tab));
+      $$("section").forEach(s => s.classList.toggle("active", s === section));
+      remember("playground-tab", section.id);
+    };
+    nav.append(tab);
+  }
+  const start = recall("playground-tab");
+  ($$("nav button")[$$("section").findIndex(s => s.id === start)] || $("nav button")).click();
+
+  $("#connect").onclick = connect;
+  $("#host").addEventListener("keydown", e => { if (e.key === "Enter") connect(); });
+  for (const radio of $$("input[name=nli-mode]")) radio.onchange = () => {
+    const pairs = $("input[name=nli-mode]:checked").value === "pairs";
+    $("#nli-pairs").style.display = pairs ? "" : "none";
+    $("#nli-zero").style.display = pairs ? "none" : "";
+  };
+  for (const button of $$("button[data-run]")) {
+    button.onclick = async () => {
+      const section = button.closest("section");
+      button.disabled = true;
+      $(".out", section).innerHTML = `<p class="note">Running…</p>`;
+      try { await runners[button.dataset.run](section); }
+      catch (error) { $(".out", section).innerHTML = `<div class="error-box">${escape(error.message)}</div>`; }
+      finally { button.disabled = false; }
+    };
+  }
+  document.addEventListener("change", e => { if (e.target.matches("[data-tray] input[type=file]")) addFiles(e.target.files); });
+  document.addEventListener("click", e => {
+    if (e.target.matches("[data-remove]")) { images.splice(Number(e.target.dataset.remove), 1); renderTrays(); }
+    if (e.target.matches("[data-clear]")) { images.length = 0; renderTrays(); }
+  });
+  for (const tray of $$("[data-tray]")) {
+    tray.addEventListener("dragover", e => { e.preventDefault(); tray.classList.add("drag"); });
+    tray.addEventListener("dragleave", () => tray.classList.remove("drag"));
+    tray.addEventListener("drop", e => { e.preventDefault(); tray.classList.remove("drag"); addFiles(e.dataTransfer.files); });
+  }
+  renderTrays();
+  connect();
+}
+init();
+</script>
+</body>
+</html>

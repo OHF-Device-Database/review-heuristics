@@ -1,0 +1,9 @@
+{
+  "$schema": "./schemas/language.schema.json",
+  "description": "Words removed before language identification because they say nothing about the language around them. The device's own brand, integration and identifiers are added per contribution. Compared case-insensitively.",
+  "mask_words": [
+    "zigbee", "z-wave", "zwave", "wi-fi", "wifi", "bluetooth", "ble", "mqtt", "esphome",
+    "tasmota", "zha", "z2m", "homekit", "matter", "thread", "rtsp", "onvif", "usb", "usb-c",
+    "poe", "ethernet", "led", "rgb", "rgbw", "ir", "app"
+  ]
+}

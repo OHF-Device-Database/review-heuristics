@@ -1,0 +1,502 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contribution checks",
+  "description": "The rules applied to every contribution, and when each warns or rejects.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Bumped with every change; tagged releases carry it."
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "toxicity"
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$",
+                "description": "Stable rule id; results and benchmark cases refer to it."
+              },
+              "description": {
+                "type": "string",
+                "description": "What the rule checks and why its settings are what they are."
+              },
+              "model": {
+                "type": "string",
+                "description": "A model id from models.json."
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Shown to the contributor when the rule fires."
+              },
+              "guideline": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The guideline section the message links to."
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "name",
+                    "summary",
+                    "getting_going",
+                    "quirks"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true,
+                "description": "Text fields the rule applies to."
+              },
+              "thresholds": {
+                "type": "object",
+                "description": "Toxicity head (a label of the model) to score limits.",
+                "additionalProperties": {
+                  "type": "object",
+                  "description": "Score limits for one signal. A unit whose score reaches 'reject' is rejected; one that reaches 'warn' is flagged for the contributor and reviewer.",
+                  "properties": {
+                    "warn": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "reject": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "minProperties": 1,
+                  "additionalProperties": false
+                },
+                "minProperties": 1
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "model",
+              "message",
+              "guideline",
+              "fields",
+              "thresholds"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "language"
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$",
+                "description": "Stable rule id; results and benchmark cases refer to it."
+              },
+              "description": {
+                "type": "string",
+                "description": "What the rule checks and why its settings are what they are."
+              },
+              "model": {
+                "type": "string",
+                "description": "A model id from models.json."
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Shown to the contributor when the rule fires."
+              },
+              "guideline": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The guideline section the message links to."
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "name",
+                    "summary",
+                    "getting_going",
+                    "quirks"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true,
+                "description": "Text fields the rule applies to."
+              },
+              "language": {
+                "type": "string",
+                "description": "The expected language, as GlotLID's ISO 639-3 code with script, e.g. eng_Latn."
+              },
+              "min_letters": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Units with fewer letters left after masking are skipped."
+              },
+              "warn_below": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Warn when the expected language's probability is below this."
+              },
+              "reject_below": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Reject when it is below this and another language is likely."
+              },
+              "reject_needs_other_at_least": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "How likely the top other language must be before rejecting."
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "model",
+              "message",
+              "guideline",
+              "fields",
+              "language",
+              "min_letters",
+              "warn_below",
+              "reject_below",
+              "reject_needs_other_at_least"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "nli_contradiction"
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$",
+                "description": "Stable rule id; results and benchmark cases refer to it."
+              },
+              "description": {
+                "type": "string",
+                "description": "What the rule checks and why its settings are what they are."
+              },
+              "model": {
+                "type": "string",
+                "description": "A model id from models.json."
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Shown to the contributor when the rule fires."
+              },
+              "guideline": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The guideline section the message links to."
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "name",
+                    "summary",
+                    "getting_going",
+                    "quirks"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true,
+                "description": "Text fields the rule applies to."
+              },
+              "thresholds": {
+                "type": "object",
+                "description": "Limits on 'contradiction', the strongest against any one fact.",
+                "additionalProperties": {
+                  "type": "object",
+                  "description": "Score limits for one signal. A unit whose score reaches 'reject' is rejected; one that reaches 'warn' is flagged for the contributor and reviewer.",
+                  "properties": {
+                    "warn": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "reject": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "minProperties": 1,
+                  "additionalProperties": false
+                },
+                "minProperties": 1
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "model",
+              "message",
+              "guideline",
+              "fields",
+              "thresholds"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "nli_entailment"
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$",
+                "description": "Stable rule id; results and benchmark cases refer to it."
+              },
+              "description": {
+                "type": "string",
+                "description": "What the rule checks and why its settings are what they are."
+              },
+              "model": {
+                "type": "string",
+                "description": "A model id from models.json."
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Shown to the contributor when the rule fires."
+              },
+              "guideline": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The guideline section the message links to."
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "name",
+                    "summary",
+                    "getting_going",
+                    "quirks"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true,
+                "description": "Text fields the rule applies to."
+              },
+              "thresholds": {
+                "type": "object",
+                "description": "Limits on 'entailment', the strongest from any one fact.",
+                "additionalProperties": {
+                  "type": "object",
+                  "description": "Score limits for one signal. A unit whose score reaches 'reject' is rejected; one that reaches 'warn' is flagged for the contributor and reviewer.",
+                  "properties": {
+                    "warn": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "reject": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "minProperties": 1,
+                  "additionalProperties": false
+                },
+                "minProperties": 1
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "model",
+              "message",
+              "guideline",
+              "fields",
+              "thresholds"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "image_class"
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$",
+                "description": "Stable rule id; results and benchmark cases refer to it."
+              },
+              "description": {
+                "type": "string",
+                "description": "What the rule checks and why its settings are what they are."
+              },
+              "model": {
+                "type": "string",
+                "description": "A model id from models.json."
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Shown to the contributor when the rule fires."
+              },
+              "guideline": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The guideline section the message links to."
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "name",
+                    "summary",
+                    "getting_going",
+                    "quirks"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true,
+                "description": "Text fields the rule applies to."
+              },
+              "thresholds": {
+                "type": "object",
+                "description": "Class from image-classes.json to limits on its zero-shot probability.",
+                "additionalProperties": {
+                  "type": "object",
+                  "description": "Score limits for one signal. A unit whose score reaches 'reject' is rejected; one that reaches 'warn' is flagged for the contributor and reviewer.",
+                  "properties": {
+                    "warn": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "reject": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "minProperties": 1,
+                  "additionalProperties": false
+                },
+                "minProperties": 1
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "model",
+              "message",
+              "guideline",
+              "thresholds"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "obscenity"
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_.]*$",
+                "description": "Stable rule id; results and benchmark cases refer to it."
+              },
+              "description": {
+                "type": "string",
+                "description": "What the rule checks and why its settings are what they are."
+              },
+              "model": {
+                "type": "string",
+                "description": "A model id from models.json."
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Shown to the contributor when the rule fires."
+              },
+              "guideline": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The guideline section the message links to."
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "name",
+                    "summary",
+                    "getting_going",
+                    "quirks"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true,
+                "description": "Text fields the rule applies to."
+              },
+              "thresholds": {
+                "type": "object",
+                "description": "Limits on 'nsfw', 'at_least_low', 'at_least_medium', 'at_least_high' or a model label.",
+                "additionalProperties": {
+                  "type": "object",
+                  "description": "Score limits for one signal. A unit whose score reaches 'reject' is rejected; one that reaches 'warn' is flagged for the contributor and reviewer.",
+                  "properties": {
+                    "warn": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "reject": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "minProperties": 1,
+                  "additionalProperties": false
+                },
+                "minProperties": 1
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "model",
+              "message",
+              "guideline",
+              "thresholds"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "rules"
+  ],
+  "additionalProperties": false
+}

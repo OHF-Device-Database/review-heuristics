@@ -1,0 +1,117 @@
+{
+  "$schema": "./schemas/models.schema.json",
+  "models": [
+    {
+      "id": "toxicity/detoxify-unbiased@fp32",
+      "source": "unitary/unbiased-toxic-roberta@36295dd80b422dc49f40052021430dae76241adc",
+      "license": "Apache-2.0",
+      "labels": [
+        "toxicity",
+        "severe_toxicity",
+        "obscene",
+        "identity_attack",
+        "insult",
+        "threat",
+        "sexual_explicit"
+      ],
+      "runtime": {
+        "intra_op_threads": 4,
+        "max_concurrency": 1,
+        "max_queue": 32,
+        "batch_size": 32
+      },
+      "notes": "The checkpoint also has identity-subgroup heads (male, female, and so on); they were training auxiliaries, not toxicity signals, so labels leaves them out."
+    },
+    {
+      "id": "toxicity/detoxify-unbiased@int8",
+      "source": "unitary/unbiased-toxic-roberta@36295dd80b422dc49f40052021430dae76241adc",
+      "license": "Apache-2.0",
+      "labels": [
+        "toxicity",
+        "severe_toxicity",
+        "obscene",
+        "identity_attack",
+        "insult",
+        "threat",
+        "sexual_explicit"
+      ],
+      "runtime": {
+        "intra_op_threads": 4,
+        "max_concurrency": 1,
+        "max_queue": 32,
+        "batch_size": 32
+      }
+    },
+    {
+      "id": "toxicity/detoxify-original@fp32",
+      "source": "unitary/toxic-bert@4d6c22e74ba2fdd26bc4f7238f50766b045a0d94",
+      "license": "Apache-2.0",
+      "labels": [
+        "toxic",
+        "severe_toxic",
+        "obscene",
+        "threat",
+        "insult",
+        "identity_hate"
+      ],
+      "runtime": {
+        "intra_op_threads": 4,
+        "max_concurrency": 1,
+        "max_queue": 32,
+        "batch_size": 32
+      }
+    },
+    {
+      "id": "nli/nli-deberta-v3-base@fp32",
+      "source": "cross-encoder/nli-deberta-v3-base@6c749ce3425cd33b46d187e45b92bbf96ee12ec7",
+      "license": "Apache-2.0",
+      "artifact": "onnx/model.onnx",
+      "runtime": {
+        "intra_op_threads": 4,
+        "max_concurrency": 1,
+        "max_queue": 32,
+        "batch_size": 16
+      },
+      "notes": "Uses the repo's own fp32 ONNX export (artifact). There is no int8 variant: dynamic int8, including the repo's own int8 files, changes the top class for about 30% of the parity pairs."
+    },
+    {
+      "id": "language/glotlid-v4@ftz",
+      "source": "cis-lmu/glotlid@fc0c62756c81f8eac7cab140439f1334d5fa6a02",
+      "license": "Apache-2.0 with notices",
+      "artifact": "model_v4.ftz",
+      "runtime": {
+        "max_concurrency": 1,
+        "max_queue": 64
+      },
+      "notes": "GlotLID v4's official quantised file; runs on the fastText runtime, not ONNX Runtime."
+    },
+    {
+      "id": "image-embed/siglip2-base-256@fp32",
+      "source": "google/siglip2-base-patch16-256@3f9f96cb90da5dbc758b01813f2f6f1aee24c1ab",
+      "license": "Apache-2.0",
+      "runtime": {
+        "intra_op_threads": 4,
+        "max_concurrency": 1,
+        "max_queue": 16,
+        "batch_size": 8,
+        "memory_arena": false
+      },
+      "notes": "memory_arena is off so memory returns to the baseline after each image request, for 2-5% more inference time."
+    },
+    {
+      "id": "obscenity/freepik-eva02@fp32",
+      "source": "Freepik/nsfw_image_detector@15b85477e4fd2000db76ae9aae0f89a72f95e2e3",
+      "license": "MIT",
+      "safe_label": "neutral",
+      "graded": true,
+      "runtime": {
+        "intra_op_threads": 4,
+        "max_concurrency": 1,
+        "max_queue": 16,
+        "batch_size": 8,
+        "memory_arena": false
+      },
+      "notes": "Labels run from safe to most explicit, so at_least sums upwards. memory_arena is off: with it on, image requests grew the server by 2.8 GB."
+    }
+  ]
+}

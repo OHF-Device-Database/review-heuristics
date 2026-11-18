@@ -1,0 +1,29 @@
+[project]
+name = "ddb-eval"
+version = "0.1.0"
+description = "Export, parity and benchmark harness for the contribution checks service."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "ddb-checks",
+    "httpx>=0.28",
+    "huggingface-hub>=0.34",
+    "numpy>=2.2",
+    "onnx>=1.20",
+    "onnxruntime>=1.22",
+    "onnxscript>=0.3",
+    "pillow>=11",
+    "timm>=1.0",
+    "torch>=2.8",
+    "torchvision>=0.23",
+    "transformers>=4.56",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

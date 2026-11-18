@@ -1,0 +1,10 @@
+models/
+reports/*
+!reports/.gitkeep
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+benchmarks/private/
+.DS_Store

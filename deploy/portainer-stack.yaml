@@ -1,0 +1,29 @@
+# Portainer stack for the self-contained serve image. Import the image first
+# (Images > Import, using the tar from `make bundle`), then deploy this stack.
+# The API has no authentication: expose it only on a trusted network.
+
+services:
+  serve:
+    image: ddb-checks/serve-bundle:0.1.0
+    environment:
+      # Comma-separated ids or globs from config/models.json, e.g. toxicity/detoxify-unbiased@int8.
+      SERVE_MODELS: "*"
+      # Only for a test bundle built with BUNDLE_PLAYGROUND=true whose playground should reach
+      # other servers: lets pages on other origins call this one.
+      # CORS_ORIGINS: "*"
+    ports:
+      - "8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    # Every variant together uses about 4.5 GB resident at rest, and image requests add up to
+    # about 1 GB while they run. Over the limit, Docker kills and restarts the server, which
+    # takes about 30 s to reload. One int8 toxicity model alone needs about 300 MB.
+    mem_limit: 8g
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/readyz')"]
+      interval: 10s
+      timeout: 3s
+      retries: 30
+      start_period: 30s
